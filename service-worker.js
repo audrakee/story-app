@@ -1,24 +1,26 @@
 // Service Worker for PWA and Push Notifications
 const CACHE_NAME = 'story-app-v1';
 const RUNTIME_CACHE = 'story-app-runtime-v1';
+// Base path for GitHub Pages deployment
+const BASE_PATH = '/story-app';
 const STATIC_ASSETS = [
-    '/',
-    '/index.html',
-    '/src/css/styles.css',
-    '/src/scripts/db.js',
-    '/src/scripts/api.js',
-    '/src/scripts/utils.js',
-    '/src/scripts/router.js',
-    '/src/scripts/auth.js',
-    '/src/scripts/notification.js',
-    '/src/scripts/pages/login.js',
-    '/src/scripts/pages/register.js',
-    '/src/scripts/pages/home.js',
-    '/src/scripts/pages/add-story.js',
-    '/src/scripts/pages/detail-story.js',
-    '/src/scripts/pages/favorites.js',
-    '/src/scripts/app.js',
-    '/manifest.json'
+    `${BASE_PATH}/`,
+    `${BASE_PATH}/index.html`,
+    `${BASE_PATH}/src/css/styles.css`,
+    `${BASE_PATH}/src/scripts/db.js`,
+    `${BASE_PATH}/src/scripts/api.js`,
+    `${BASE_PATH}/src/scripts/utils.js`,
+    `${BASE_PATH}/src/scripts/router.js`,
+    `${BASE_PATH}/src/scripts/auth.js`,
+    `${BASE_PATH}/src/scripts/notification.js`,
+    `${BASE_PATH}/src/scripts/pages/login.js`,
+    `${BASE_PATH}/src/scripts/pages/register.js`,
+    `${BASE_PATH}/src/scripts/pages/home.js`,
+    `${BASE_PATH}/src/scripts/pages/add-story.js`,
+    `${BASE_PATH}/src/scripts/pages/detail-story.js`,
+    `${BASE_PATH}/src/scripts/pages/favorites.js`,
+    `${BASE_PATH}/src/scripts/app.js`,
+    `${BASE_PATH}/manifest.json`
 ];
 
 // Install event
