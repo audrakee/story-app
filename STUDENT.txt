@@ -1,0 +1,254 @@
+DICODING SUBMISSION - PROYEK KEDUA: STORY APP
+==========================================
+
+Nama Proyek: Story App - Aplikasi Berbagi Cerita dengan Foto dan Lokasi
+Dibuat oleh: Dicoding Student
+Tanggal: Desember 2024
+
+## DESKRIPSI APLIKASI
+
+Story App adalah Progressive Web Application (PWA) yang memungkinkan pengguna untuk berbagi cerita mereka dengan foto dan informasi lokasi. Aplikasi ini dibangun dengan vanilla JavaScript dan mengimplementasikan semua kriteria submission proyek kedua Dicoding.
+
+## FITUR UTAMA
+
+### 1. Authentication (Login & Register)
+- Pengguna dapat mendaftar dengan nama, email, dan password (min 8 karakter)
+- Pengguna dapat login dan mendapatkan JWT token
+- Token disimpan di localStorage untuk manajemen session
+
+### 2. SPA (Single Page Application) dengan Transisi Halaman
+- Implementasi hash routing (#/) untuk navigasi tanpa reload halaman
+- View transitions dengan animasi fadeInUp
+- Arsitektur MVP dengan pemisahan concerns (db.js, api.js, utils.js, router.js, auth.js, notification.js)
+- Halaman terpisah untuk: Login, Register, Home, Add Story, Detail Story, dan Favorites
+
+### 3. Menampilkan Data dan Marker pada Peta
+- Integrasi Leaflet.js untuk peta interaktif
+- Menampilkan stories dalam bentuk daftar dengan gambar, nama penulis, deskripsi, dan lokasi
+- Visualisasi lokasi stories menggunakan markers pada peta
+- Popup interaktif pada marker untuk melihat detail story
+- Multiple tile layers (OpenStreetMap dan Satellite)
+- Click pada marker untuk membuka detail story
+
+### 4. Fitur Tambah Data Baru (Add Story)
+- Form untuk input deskripsi story
+- Upload foto dari device atau kamera langsung
+- Pemilihan koordinat latitude/longitude dengan click pada peta
+- Preview gambar sebelum upload
+- Validasi file size (max 1MB)
+- Fitur kamera langsung dengan media stream
+- Pengiriman data ke API secara asynchronous
+
+### 5. IndexedDB Integration
+- Menyimpan stories yang sudah diambil dari API di IndexedDB
+- Fitur Favorites untuk menandai stories favorit
+- Fitur Pending Uploads untuk stories yang ditambah saat offline
+- CRUD operations: Create, Read, Delete
+
+### 6. PWA (Progressive Web App)
+- Installable di mobile dan desktop
+- Service Worker untuk offline support
+- Caching strategy: Cache First untuk static assets, Network First untuk API
+- Manifest.json dengan icon dan screenshots
+- Install prompt untuk mengajak user install app
+- Support untuk offline viewing (app shell dan cached stories)
+
+### 7. Push Notifications
+- Subscribe/unsubscribe ke web push notifications
+- VAPID public key: BCCs2eonMI-6H2ctvFaWg-UYdDv387Vno_bzUzALpB442r2lCnsHmtrx8biyPi_E-1fSGABK_Qs_GlvPoJJqxbk
+- Notifikasi dinamis dari server
+- Button toggle untuk enable/disable notifications
+- Action untuk menutup notifikasi
+
+### 8. Accessibility (WCAG)
+- Semantic HTML elements (header, nav, main, footer, article)
+- Alt text pada semua gambar
+- Labels pada semua input elements
+- ARIA labels dan attributes
+- Keyboard navigation support (focus-visible)
+- Skip to content link
+- Responsive design (375px mobile, 768px tablet, 1024px desktop)
+
+### 9. Offline Support
+- Caching API responses di service worker
+- IndexedDB untuk local storage
+- Pending uploads sync saat kembali online
+- Fallback offline page
+
+## TEKNOLOGI YANG DIGUNAKAN
+
+- HTML5 (Semantic)
+- CSS3 (Flexbox, Grid, Responsive Design)
+- Vanilla JavaScript (ES6+)
+- Leaflet.js (Maps)
+- IndexedDB (Local Storage)
+- Service Worker (PWA)
+- Web Push API
+- Fetch API
+
+## STRUKTUR FOLDER
+
+```
+story-app/
+├── index.html                 # HTML utama
+├── service-worker.js          # Service worker untuk PWA
+├── manifest.json              # Web app manifest
+├── STUDENT.txt               # File ini
+└── src/
+    ├── css/
+    │   └── styles.css        # Semua styling
+    ├── scripts/
+    │   ├── db.js             # IndexedDB utilities
+    │   ├── api.js            # API integration
+    │   ├── utils.js          # Helper functions
+    │   ├── router.js         # SPA router
+    │   ├── auth.js           # Authentication
+    │   ├── notification.js   # Push notifications
+    │   ├── app.js            # Main app logic
+    │   └── pages/
+    │       ├── login.js
+    │       ├── register.js
+    │       ├── home.js
+    │       ├── add-story.js
+    │       ├── detail-story.js
+    │       └── favorites.js
+    └── assets/               # Icons dan images
+```
+
+## PENGGUNAAN APLIKASI
+
+### 1. Register
+- Klik "Register" link di halaman login
+- Isi nama, email, dan password (min 8 karakter)
+- Klik "Create Account"
+
+### 2. Login
+- Isi email dan password
+- Klik "Sign In"
+
+### 3. Melihat Stories
+- Halaman Home menampilkan daftar stories
+- Peta menunjukkan lokasi stories dengan markers
+- Klik pada story untuk melihat detail
+- Klik marker di peta untuk melihat story yang ada di lokasi tersebut
+
+### 4. Add Story
+- Klik "Add Story" di navigation
+- Upload foto dari device atau ambil dengan kamera
+- Isi deskripsi
+- Klik pada peta untuk memilih lokasi (opsional)
+- Klik "Share Story"
+
+### 5. Favorites
+- Klik tombol "Favorite" pada story card
+- Favorited stories disimpan di IndexedDB
+- Buka halaman "Favorites" untuk melihat koleksi
+
+### 6. Push Notifications
+- Klik tombol 🔔 untuk enable/disable notifications
+- Terima notifikasi saat story baru ditambahkan
+
+### 7. Install App
+- Pop-up "Install Story App" akan muncul
+- Klik "Install" untuk install ke homescreen
+- Akses offline setelah installed
+
+## DEPLOYMENT
+
+Aplikasi telah di-deploy di GitHub Pages.
+URL: [Masukkan URL deployment di sini]
+
+Untuk deploy sendiri:
+1. Buat repository di GitHub
+2. Push semua file ke repository
+3. Enable GitHub Pages di settings
+4. Deploy URL akan tersedia di settings
+
+## API YANG DIGUNAKAN
+
+### Dicoding Story API
+- Base URL: https://story-api.dicoding.dev/v1
+- Endpoints:
+  - POST /register - Register user baru
+  - POST /login - Login dan dapatkan token
+  - GET /stories - Dapatkan semua stories
+  - GET /stories/:id - Dapatkan detail story
+  - POST /stories - Tambah story (authenticated)
+  - POST /notifications/subscribe - Subscribe push notification
+  - DELETE /notifications/subscribe - Unsubscribe push notification
+
+### Authentication
+- Menggunakan JWT token di header: Authorization: Bearer <token>
+- Token disimpan di localStorage setelah login
+
+## REQUIREMENTS
+
+- Browser modern yang support:
+  - ES6+ JavaScript
+  - IndexedDB
+  - Service Worker
+  - Web Push API
+  - Leaflet.js (loaded from CDN)
+
+## KETERANGAN KHUSUS
+
+### API Keys
+- Tidak memerlukan API key khusus untuk Dicoding Story API
+- Push notification menggunakan VAPID public key yang sudah disediakan
+
+### Offline Mode
+- Saat offline, aplikasi dapat menampilkan:
+  - Stories yang sudah di-cache
+  - Favorites dari IndexedDB
+  - Add story (disimpan di pending uploads, di-sync saat online)
+
+### Browser Compatibility
+- Chrome/Edge 88+
+- Firefox 87+
+- Safari 14+
+- Mobile browsers dengan dukungan PWA
+
+## CATATAN PENGEMBANG
+
+### Performance
+- Static assets di-cache dengan Cache First strategy
+- API responses di-cache dengan Network First strategy
+- Images di-lazy load
+
+### Accessibility
+- Semua interactive elements dapat diakses dengan keyboard
+- Focus styles visible untuk keyboard navigation
+- ARIA labels untuk screen reader
+- Semantic HTML untuk better structure
+
+### Progressive Enhancement
+- App tetap berfungsi di browser lama dengan graceful degradation
+- Fitur PWA tidak wajib untuk basic functionality
+- Offline mode sebagai bonus feature
+
+## SARAN UNTUK PENGEMBANGAN LEBIH LANJUT
+
+1. Implementasi infinite scroll untuk stories
+2. Add filter dan search functionality
+3. Add real-time notifications
+4. Add share to social media
+5. Add image editing sebelum upload
+6. Add geolocation auto-detect
+7. Add dark mode
+8. Implementasi backend sendiri untuk cache management
+9. Add analytics
+10. Optimasi performance dengan lazy loading
+
+## KONTAK & SUPPORT
+
+Untuk pertanyaan atau laporan bug, silakan hubungi melalui:
+- Dicoding Support: https://www.dicoding.com/support
+
+## LISENSI
+
+Proyek ini dibuat untuk submission Dicoding Academy dan menggunakan API dari Dicoding.
+
+---
+
+Generated: Desember 2024
+Version: 1.0
