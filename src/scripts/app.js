@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         setupUI();
 
         // Check for install prompt
-        setupInstallPrompt();
+        showInstallPrompt();
 
     } catch (error) {
         console.error('App initialization error:', error);
