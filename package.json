@@ -1,0 +1,16 @@
+{
+  "name": "story-app",
+  "version": "1.0.0",
+  "description": "Story App - Dicoding Submission Proyek Kedua",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -p 8080 -c-1",
+    "build": "echo \"No build step defined\"",
+    "test": "echo \"No tests defined\""
+  },
+  "author": "audrakee",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
