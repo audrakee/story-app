@@ -156,7 +156,26 @@ story-app/
 ## DEPLOYMENT
 
 Aplikasi telah di-deploy di GitHub Pages.
-URL: [Masukkan URL deployment di sini]
+URL: https://audrakee.github.io/story-app/
+
+## Menjalankan secara Lokal (untuk reviewer)
+
+1. Clone repository atau download project
+2. Install dependencies:
+
+```
+npm install
+```
+
+3. Jalankan server lokal (server wajib untuk service worker):
+
+```
+npm start
+```
+
+4. Buka di browser: http://localhost:8080
+
+Catatan: `package.json` dan `package-lock.json` sudah disertakan agar reviewer dapat menjalankan `npm install` untuk memasang dependency (`http-server`).
 
 Untuk deploy sendiri:
 1. Buat repository di GitHub
